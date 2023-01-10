@@ -1,0 +1,2 @@
+APIs: cầu nối FE vs BE (link URL)
+object => JSON
