@@ -1,2 +1,4 @@
 APIs: cầu nối FE vs BE (link URL)
 object => JSON
+
+SPA: SINGLE PAGE APPLICATION
