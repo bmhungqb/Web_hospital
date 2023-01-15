@@ -62,6 +62,10 @@ let getDeleteCRUD = async (req, res) => {
     }
 }
 
+let handleLogin = async (req, res) => {
+    console.log(1);
+}
+
 module.exports = {
     getHomePage: getHomePage,
     getAboutPage: getAboutPage,
@@ -71,4 +75,5 @@ module.exports = {
     getEditCRUD: getEditCRUD,
     putCRUD: putCRUD,
     getDeleteCRUD: getDeleteCRUD,
+    handleLogin: handleLogin,
 }
