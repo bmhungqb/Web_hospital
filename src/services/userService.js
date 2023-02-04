@@ -22,7 +22,7 @@ let handleUserLogin = (email, password) => {
                 // user already exist
                 let user = await db.User.findOne({
                     where: { email: email },
-                    attributes: ['email', 'roleId', 'password'],
+                    attributes: ['email', 'roleId', 'password', 'firstName', 'lastName'],
                     raw: true,
                 });
                 if (user) {
@@ -195,7 +195,6 @@ let getAllCodeService = (typeInput) => {
             } else {
                 let res = {};
                 let allcode = await db.Allcode.findAll({
-                    attributes: { exclude: ["value_En", "value_Vi"] },
                     where: { type: typeInput },
                 });
                 res.errCode = 0;
