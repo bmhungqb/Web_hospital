@@ -74,21 +74,20 @@ let saveDetailInforDoctor = (inputData) => {
                 } else if (inputData.action === 'EDIT') {
                     let doctorMarkdown = await db.Markdown.findOne({
                         where: { doctorId: inputData.doctorId },
-                        raw: false
+                        raw: false,
+                        nest: true
                     })
                     if (doctorMarkdown) {
                         doctorMarkdown.contentHTML = inputData.contentHTML;
                         doctorMarkdown.contentMarkdown = inputData.contentMarkdown;
                         doctorMarkdown.description = inputData.description;
-                        doctorMarkdown.updateAt = new Date();
                         await doctorMarkdown.save()
                     }
                 }
                 //upsert to doctor_infor table
-                console.log("input data: ", inputData)
                 let doctorInfor = await db.Doctor_Infor.findOne({
                     where: { doctorId: inputData.doctorId },
-                    raw: false
+                    raw: false,
                 })
                 if (doctorInfor) {
                     doctorInfor.doctorId = inputData.doctorId;
@@ -110,10 +109,11 @@ let saveDetailInforDoctor = (inputData) => {
                         note: inputData.note,
                     })
                 }
-                resolve({
-                    errCode: 0,
-                    errMessage: 'Save infor doctor succeed'
-                })
+                console.log(doctorInfor),
+                    resolve({
+                        errCode: 0,
+                        errMessage: 'Save infor doctor succeed'
+                    })
             }
         } catch (e) {
             reject(e)
@@ -297,4 +297,5 @@ module.exports = {
     bulkCreateSchedule: bulkCreateSchedule,
     getScheduleByDate: getScheduleByDate,
     getExtraInforDoctorById: getExtraInforDoctorById,
+
 }
