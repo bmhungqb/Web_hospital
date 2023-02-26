@@ -115,11 +115,10 @@ let saveDetailInforDoctor = (inputData) => {
 
                     })
                 }
-                console.log(doctorInfor),
-                    resolve({
-                        errCode: 0,
-                        errMessage: 'Save infor doctor succeed'
-                    })
+                resolve({
+                    errCode: 0,
+                    errMessage: 'Save infor doctor succeed'
+                })
             }
         } catch (e) {
             reject(e)
