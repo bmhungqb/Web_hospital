@@ -1,4 +1,4 @@
-import db from "../models"
+import db from "../models";
 let createSpecialty = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
