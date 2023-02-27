@@ -359,7 +359,7 @@ let getListPatientForDoctor = (doctorId, date) => {
                     errMessage: "Missing required parameters!"
                 })
             } else {
-                let data = await date.Booking.findAll({
+                let data = await db.Booking.findAll({
                     where: {
                         statusId: 'S2',
                         doctorId: doctorId,
@@ -373,6 +373,9 @@ let getListPatientForDoctor = (doctorId, date) => {
                                 { model: db.Allcode, as: 'genderData', attributes: ['valueEn', 'valueVi'] }
                             ]
                         },
+                        {
+                            model: db.Allcode, as: 'timeTypeDataPatient', attributes: ['valueEn', 'valueVi']
+                        }
                     ],
                     raw: false,
                     nest: true
